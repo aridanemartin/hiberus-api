@@ -4,36 +4,13 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "./GridPage.module.css";
 import { getPokemon } from "@/app/_lib/pokemonAPI";
-import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { PokemonResult } from "@/app/_interfaces/pokemon/pokemon";
+import DetailsModal from "../DetailsModal/DetailsModal";
 
-const Modal = ({ pokemon, onClose }) => {
-  return (
-    <section className={styles.modal}>
-      <div className={styles.modalContent}>
-        <h1>{pokemon.name}</h1>
-        <Image
-          src={pokemon.sprites.front_default}
-          alt={pokemon.name}
-          width={200}
-          height={200}
-        />
-        {pokemon.stats.map((stat) => (
-          <ProgressBar
-            key={stat.stat.name}
-            stat={stat.stat.name}
-            value={stat.base_stat}
-          />
-        ))}
-        <button onClick={onClose}>Close</button>
-      </div>
-    </section>
-  );
-};
-
-export const GridPage = ({ data }) => {
+export const GridPage = ({ data }: { data: { results: PokemonResult[] } }) => {
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
 
-  const handlePokemonClick = async (pokemon) => {
+  const handlePokemonClick = async (pokemon: PokemonResult) => {
     const selectedPokemon = await getPokemon(pokemon.name);
     setSelectedPokemonName(selectedPokemon);
   };
@@ -43,8 +20,8 @@ export const GridPage = ({ data }) => {
   };
 
   return (
-    <>
-      {data.results.map((pokemon) => (
+    <section className={styles.container}>
+      {data.results.map((pokemon: PokemonResult) => (
         <div
           onClick={() => handlePokemonClick(pokemon)}
           className={styles.card}
@@ -62,8 +39,8 @@ export const GridPage = ({ data }) => {
         </div>
       ))}
       {selectedPokemonName && (
-        <Modal pokemon={selectedPokemonName} onClose={onCloseModal} />
+        <DetailsModal pokemon={selectedPokemonName} onClose={onCloseModal} />
       )}
-    </>
+    </section>
   );
 };

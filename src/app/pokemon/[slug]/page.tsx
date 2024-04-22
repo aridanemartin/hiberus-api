@@ -8,10 +8,9 @@ export default async function PokemonDetailPage({
 }) {
   const { slug } = params;
   const pokemon = await getPokemon(slug);
-
-  const pokemonTypes = pokemon.types.map((type) => type.type.name);
-
-  console.log();
+  const pokemonTypes: string[] = pokemon.types.map(
+    (type: { type: { name: string } }) => type.type.name
+  );
 
   return (
     <>

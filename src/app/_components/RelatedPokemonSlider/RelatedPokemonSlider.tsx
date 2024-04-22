@@ -1,9 +1,13 @@
-import { getPokemonType } from "@/app/_lib/pokemonAPI";
+import { getPokemonByType } from "@/app/_lib/pokemonAPI";
 
-export const RelatedPokemonSlider = async ({ pokemonTypes }) => {
+export const RelatedPokemonSlider = async ({
+  pokemonTypes,
+}: {
+  pokemonTypes: any;
+}) => {
   const relatedPokemon = await Promise.all(
-    pokemonTypes.map(async (type) => {
-      return await getPokemonType(type);
+    pokemonTypes.map(async (type: any) => {
+      return await getPokemonByType(type);
     })
   );
 

@@ -1,3 +1,5 @@
+import { PokemonList } from "../_interfaces/pokemon/pokemon";
+
 const POKEMON_API = "https://pokeapi.co/api/v2/";
 
 // getPokemonList -> Get the first 151 pokemon
@@ -15,7 +17,7 @@ export async function getPokemon(name: string) {
   return data;
 }
 
-export async function getPokemonByType(type: string) {
+export async function getPokemonByType(type: string): Promise<PokemonList> {
   const response = await fetch(POKEMON_API + "type/" + type);
   const data = await response.json();
   return data;
