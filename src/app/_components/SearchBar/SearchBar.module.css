@@ -1,0 +1,14 @@
+.searchBar {
+  display: flex;
+  width: -webkit-fill-available;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+}
+
+@media (width < 768px) {
+  .searchBar {
+    margin: 1rem 20px;
+  }
+}

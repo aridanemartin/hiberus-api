@@ -4,6 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
+import styles from "./SearchBar.module.css";
 
 export const SearchBar = () => {
   const [isTyping, setIsTyping] = useState(false);
@@ -23,6 +24,7 @@ export const SearchBar = () => {
 
   return (
     <input
+      className={styles.searchBar}
       type="text"
       placeholder="Search for a Pokémon"
       onChange={(e) => {
