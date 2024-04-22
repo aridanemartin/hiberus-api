@@ -15,7 +15,7 @@ export async function getPokemon(name: string) {
   return data;
 }
 
-export async function getPokemonType(type: string) {
+export async function getPokemonByType(type: string) {
   const response = await fetch(POKEMON_API + "type/" + type);
   const data = await response.json();
   return data;

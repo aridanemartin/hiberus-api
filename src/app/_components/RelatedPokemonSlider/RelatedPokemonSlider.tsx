@@ -1,6 +1,4 @@
 import { getPokemonType } from "@/app/_lib/pokemonAPI";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 export const RelatedPokemonSlider = async ({ pokemonTypes }) => {
   const relatedPokemon = await Promise.all(
