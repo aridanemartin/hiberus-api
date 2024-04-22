@@ -6,6 +6,7 @@ import styles from "./GridPage.module.css";
 import { getPokemon } from "@/app/_lib/pokemonAPI";
 import { PokemonResult } from "@/app/_interfaces/pokemon/pokemon";
 import DetailsModal from "../DetailsModal/DetailsModal";
+import { capitalizeFirstLetter } from "@/app/_helpers/CapitalizeFirstLetter";
 
 export const GridPage = ({ data }: { data: { results: PokemonResult[] } }) => {
   const [selectedPokemonName, setSelectedPokemonName] = useState(null);
@@ -22,7 +23,7 @@ export const GridPage = ({ data }: { data: { results: PokemonResult[] } }) => {
   return (
     <section className={styles.container}>
       {data.results.map((pokemon: PokemonResult) => (
-        <div
+        <article
           onClick={() => handlePokemonClick(pokemon)}
           className={styles.card}
           key={pokemon.name}
@@ -35,8 +36,8 @@ export const GridPage = ({ data }: { data: { results: PokemonResult[] } }) => {
             width={200}
             height={200}
           />
-          <h2>{pokemon.name}</h2>
-        </div>
+          <h2>{capitalizeFirstLetter(pokemon.name)}</h2>
+        </article>
       ))}
       {selectedPokemonName && (
         <DetailsModal pokemon={selectedPokemonName} onClose={onCloseModal} />

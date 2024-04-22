@@ -21,13 +21,10 @@ export default async function Home({
     results: filteredPokemonList,
   };
 
-  console.log("===search==>", pokemonList);
-  console.log("===search==>", filteredPokemon);
-
   return (
     <main>
-      <SearchBar />
       <Layout maxWidth={750}>
+        <SearchBar />
         <GridPage data={filteredPokemon} />
       </Layout>
     </main>

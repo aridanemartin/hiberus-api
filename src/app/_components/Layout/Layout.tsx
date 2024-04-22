@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Layout.module.css";
 
 export const Layout = ({
   maxWidth,
@@ -9,6 +10,7 @@ export const Layout = ({
 }) => {
   return (
     <div
+      className={styles.layoutContainer}
       style={{
         maxWidth: `${maxWidth}px`,
         margin: "0 auto",

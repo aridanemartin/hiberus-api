@@ -2,6 +2,7 @@ import { Pokemon } from "@/app/_interfaces/pokemon/pokemon";
 import styles from "./DetailsModal.module.css";
 import Image from "next/image";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
+import { capitalizeFirstLetter } from "@/app/_helpers/CapitalizeFirstLetter";
 
 interface DetailsModalProps {
   pokemon: Pokemon;
@@ -12,7 +13,7 @@ const DetailsModal = ({ pokemon, onClose }: DetailsModalProps) => {
   return (
     <section className={styles.modal}>
       <div className={styles.modalContent}>
-        <h1>{pokemon.name}</h1>
+        <h1>{capitalizeFirstLetter(pokemon.name)}</h1>
         {pokemon.sprites.front_default && (
           <Image
             src={pokemon.sprites.front_default}
