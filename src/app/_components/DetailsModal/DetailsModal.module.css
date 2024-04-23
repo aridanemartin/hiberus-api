@@ -12,3 +12,24 @@
   z-index: 1000;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
+
+.modalHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.types {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+}
