@@ -1,4 +1,5 @@
 import { RelatedPokemonSection } from "@/app/_components/RelatedPokemonSection/RelatedPokemonSection";
+import { PokemonType } from "@/app/_interfaces/pokemon/pokemon";
 import { getPokemon } from "@/app/_lib/pokemonAPI";
 
 export default async function PokemonDetailPage({
@@ -8,7 +9,7 @@ export default async function PokemonDetailPage({
 }) {
   const { slug } = params;
   const pokemon = await getPokemon(slug);
-  const pokemonTypes: string[] = pokemon.types.map(
+  const pokemonTypes: PokemonType[] = pokemon.types.map(
     (type: { type: { name: string } }) => type.type.name
   );
 
