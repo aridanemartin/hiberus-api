@@ -1,0 +1,22 @@
+.searchBarSkeleton {
+  display: flex;
+  height: 43.5px;
+  margin: 2rem auto;
+  width: -webkit-fill-available;
+  background-color: #f3f3f3;
+  max-width: 500px;
+  border-radius: 25px;
+}
+
+.gridSkeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  margin: 0 auto;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.cardSkeleton {
+  height: 260px;
+  background-color: #f3f3f3;
+}

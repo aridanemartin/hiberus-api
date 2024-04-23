@@ -3,6 +3,8 @@ import styles from "./DetailsModal.module.css";
 import Image from "next/image";
 import { ProgressBar } from "../ProgressBar/ProgressBar";
 import { capitalizeFirstLetter } from "@/app/_helpers/CapitalizeFirstLetter";
+import Link from "next/link";
+import dynamic from "next/dynamic";
 
 interface DetailsModalProps {
   pokemon: Pokemon;
@@ -13,7 +15,23 @@ const DetailsModal = ({ pokemon, onClose }: DetailsModalProps) => {
   return (
     <section className={styles.modal}>
       <div className={styles.modalContent}>
-        <h1>{capitalizeFirstLetter(pokemon.name)}</h1>
+        <div className={styles.modalHeader}>
+          <h1 className={styles.title}>
+            {capitalizeFirstLetter(pokemon.name)}
+          </h1>
+          <button onClick={onClose}>Close</button>
+        </div>
+        <section className={styles.types}>
+          <p>Types:</p>
+          {pokemon.types.map((type) => (
+            <Link
+              key={type.type.name}
+              href={`/pokemon-by-type/${type.type.name.toLowerCase()}`}
+            >
+              {capitalizeFirstLetter(type.type.name)}
+            </Link>
+          ))}
+        </section>
         {pokemon.sprites.front_default && (
           <Image
             src={pokemon.sprites.front_default}
@@ -29,7 +47,7 @@ const DetailsModal = ({ pokemon, onClose }: DetailsModalProps) => {
             value={stat.base_stat}
           />
         ))}
-        <button onClick={onClose}>Close</button>
+        <Link href={`/detail/${pokemon.name}`}>Go to detail</Link>
       </div>
     </section>
   );

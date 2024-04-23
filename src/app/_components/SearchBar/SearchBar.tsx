@@ -19,7 +19,7 @@ export const SearchBar = () => {
     } else {
       params.delete("search");
     }
-    router.replace(`/?search=${search}`);
+    router.replace(`/?${params.toString()}`);
   }, 300);
 
   return (
@@ -29,7 +29,7 @@ export const SearchBar = () => {
       placeholder="Search for a Pokémon"
       onChange={(e) => {
         setIsTyping(true);
-        handleSearch(e.target.value);
+        handleSearch(e.target.value.toLowerCase());
       }}
       onBlur={() => setIsTyping(false)}
     />

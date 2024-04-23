@@ -74,7 +74,7 @@ interface Move {
   // TBD
 }
 
-interface Stat {
+export interface Stat {
   stat: {
     name: string;
     url: string;
@@ -82,6 +82,10 @@ interface Stat {
   base_stat: number;
 }
 
+interface TypeDetail {
+  name: string;
+}
+
 interface Type {
-  // Structure of a type not provided
+  type: TypeDetail;
 }
