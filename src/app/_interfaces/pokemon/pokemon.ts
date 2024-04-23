@@ -1,12 +1,13 @@
-// export interface Pokemon {
-//   id: number;
-//   name: string;
-//   type: string;
-//   imageUrl: string;
-// }
-
 export interface PokemonData {
   pokemon: {
+    name: string;
+    url: string;
+  };
+  slot: number;
+}
+
+export interface PokemonType {
+  type: {
     name: string;
     url: string;
   };
@@ -31,18 +32,18 @@ export interface Pokemon {
     latest: string;
     legacy: string;
   };
-  forms: any[]; // The structure of forms is not specified in the provided data
+  forms: any[];
   game_indices: GameIndex[];
   height: number;
-  held_items: any[]; // The structure of held_items is not specified in the provided data
+  held_items: any[];
   id: number;
   is_default: boolean;
   location_area_encounters: string;
   moves: Move[];
   name: string;
   order: number;
-  past_abilities: any[]; // The structure of past_abilities is not specified in the provided data
-  past_types: any[]; // The structure of past_types is not specified in the provided data
+  past_abilities: any[];
+  past_types: any[];
   species: {
     name: string;
     url: string;

@@ -2,14 +2,15 @@ import { getPokemon, getPokemonByType } from "@/app/_lib/pokemonAPI";
 import Image from "next/image";
 import styles from "./RelatedPokemonSection.module.css";
 import Link from "next/link";
+import { PokemonData, PokemonType } from "@/app/_interfaces/pokemon/pokemon";
 
 export const RelatedPokemonSection = async ({
   pokemonTypes,
 }: {
-  pokemonTypes: any[];
+  pokemonTypes: PokemonType[];
 }) => {
   const relatedPokemon = await Promise.all(
-    pokemonTypes.map(async (type: any) => {
+    pokemonTypes.map(async (type: PokemonType) => {
       return await getPokemonByType(type.type.name);
     })
   );
@@ -18,7 +19,7 @@ export const RelatedPokemonSection = async ({
   const mergedPokemonListFromTypes = relatedPokemon
     .map((pokemon) => pokemon.pokemon)
     .flat()
-    .reduce((acc: string[], curr: any) => {
+    .reduce((acc: string[], curr) => {
       if (!acc.includes(curr.pokemon.name)) {
         acc.push(curr.pokemon.name);
       }
