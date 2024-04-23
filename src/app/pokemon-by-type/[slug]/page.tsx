@@ -1,4 +1,7 @@
-import { getPokemonByType } from "@/app/_lib/pokemonAPI";
+import { GridPage } from "@/app/_components/GridPage/GridPage";
+import { Layout } from "@/app/_components/Layout/Layout";
+import { PokemonData } from "@/app/_interfaces/pokemon/pokemon";
+import { getPokemonByType, getPokemonList } from "@/app/_lib/pokemonAPI";
 import React from "react";
 
 const PokemonByType = async ({
@@ -6,14 +9,27 @@ const PokemonByType = async ({
 }: {
   params: { slug: string };
 }) => {
-  const pokemon = await getPokemonByType(slug);
+  const pokemonByType = await getPokemonByType(slug);
+
+  function adaptPokemonArray(pokemonArray: PokemonData[]) {
+    return pokemonArray.map((obj) => ({
+      name: obj.pokemon.name,
+      url: obj.pokemon.url,
+    }));
+  }
+
+  const pokemonResults = adaptPokemonArray(pokemonByType.pokemon);
+
+  const pokemonResult = {
+    count: pokemonByType.pokemon.length,
+    results: pokemonResults,
+  };
 
   return (
-    <>
-      {pokemon.pokemon.map((pokemon) => (
-        <div key={pokemon.pokemon.name}>{pokemon.pokemon.name}</div>
-      ))}
-    </>
+    <Layout maxWidth={1100}>
+      <h1>Pokémon of type {slug}</h1>
+      <GridPage data={pokemonResult} />
+    </Layout>
   );
 };
 

@@ -1,4 +1,4 @@
-import { RelatedPokemonSlider } from "@/app/_components/RelatedPokemonSlider/RelatedPokemonSlider";
+import { RelatedPokemonSection } from "@/app/_components/RelatedPokemonSection/RelatedPokemonSection";
 import { getPokemon } from "@/app/_lib/pokemonAPI";
 
 export default async function PokemonDetailPage({
@@ -21,7 +21,7 @@ export default async function PokemonDetailPage({
         </>
       )}
 
-      <RelatedPokemonSlider pokemonTypes={pokemonTypes} />
+      <RelatedPokemonSection pokemonTypes={pokemonTypes} />
     </>
   );
 }
