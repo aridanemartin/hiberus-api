@@ -15,7 +15,7 @@ export const RelatedPokemonSection = async ({
   );
 
   //merge the pokemon names that are on more than one type
-  const pokemonNames = relatedPokemon
+  const mergedPokemonListFromTypes = relatedPokemon
     .map((pokemon) => pokemon.pokemon)
     .flat()
     .reduce((acc: string[], curr: any) => {
@@ -28,10 +28,13 @@ export const RelatedPokemonSection = async ({
 
   return (
     <section className={styles.container}>
-      {pokemonNames.map(async (name) => {
+      {mergedPokemonListFromTypes.map(async (name) => {
         const pokemonDetail = await getPokemon(name);
         return (
-          <Link key={name} href={`/detail/${pokemonDetail.name}`}>
+          <Link
+            key={`relatedPokemon-${name}`}
+            href={`/detail/${pokemonDetail.name}`}
+          >
             <article className={styles.card}>
               <Image
                 key={name}

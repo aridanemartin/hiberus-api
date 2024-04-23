@@ -15,7 +15,11 @@ export const ProgressBar = ({
   return (
     <div className={styles.progressBarContainer}>
       <p className={styles.label}>{stat}:</p>
-      <div className={styles.progress} style={progressBarStyle}>
+      <div
+        className={styles.progress}
+        data-testid="progress-bar"
+        style={progressBarStyle}
+      >
         <div className={styles.progressBar}></div>
       </div>
     </div>
