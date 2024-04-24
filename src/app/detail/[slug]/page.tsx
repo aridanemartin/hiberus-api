@@ -24,16 +24,18 @@ const DetailPage = async ({
         <Link className={styles.closeButton} href="/">
           <Image src={backButton} alt="Close" width={20} height={20} />
         </Link>
-        <h1 className={styles.title}>{capitalizeFirstLetter(slug)} details</h1>
       </div>
-      {pokemonDetail.sprites.front_default && (
-        <Image
-          src={pokemonDetail.sprites.front_default}
-          alt={pokemonDetail.name}
-          width={200}
-          height={200}
-        />
-      )}
+      <div className={styles.mainTitleAndImageContainer}>
+        <h1 className={styles.title}>{capitalizeFirstLetter(slug)} details</h1>
+        {pokemonDetail.sprites.other["official-artwork"].front_default && (
+          <Image
+            src={pokemonDetail.sprites.other["official-artwork"].front_default}
+            alt={pokemonDetail.name}
+            width={200}
+            height={200}
+          />
+        )}
+      </div>
       <section className={styles.statsContainer}>
         {pokemonDetail.stats.map((stat: Stat) => (
           <ProgressBar

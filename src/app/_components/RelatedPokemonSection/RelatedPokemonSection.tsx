@@ -40,13 +40,14 @@ export const RelatedPokemonSection = async ({
           >
             <article className={styles.card}>
               <Image
-                key={name}
-                src={pokemonDetail.sprites.front_default}
+                src={
+                  pokemonDetail.sprites.other["official-artwork"].front_default
+                }
                 alt={name}
                 width={100}
                 height={100}
               />
-              <p className={styles.pokemonName} key={name}>
+              <p className={styles.pokemonName}>
                 {capitalizeFirstLetter(name)}
               </p>
             </article>

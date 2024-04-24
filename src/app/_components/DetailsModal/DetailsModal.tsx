@@ -49,9 +49,9 @@ const DetailsModal = ({ pokemon, onClose }: DetailsModalProps) => {
               Go to detail
             </Link>
           </section>
-          {pokemon.sprites.front_default && (
+          {pokemon.sprites.other["official-artwork"].front_default && (
             <Image
-              src={pokemon.sprites.front_default}
+              src={pokemon.sprites.other["official-artwork"].front_default}
               alt={pokemon.name}
               width={200}
               height={200}

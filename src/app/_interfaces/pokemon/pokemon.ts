@@ -57,6 +57,11 @@ export interface Pokemon {
     front_female: string | null;
     front_shiny: string | null;
     front_shiny_female: string | null;
+    other: {
+      "official-artwork": {
+        front_default: string;
+      };
+    };
   };
   stats: Stat[];
   types: Type[];
