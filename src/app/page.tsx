@@ -12,7 +12,7 @@ export default async function Home({
 }) {
   const pokemonList = await getPokemonList();
 
-  const search = searchParams?.search || '';
+  const search = searchParams?.search || "";
 
   const filteredPokemonList = pokemonList.results.filter((pokemon: Pokemon) =>
     pokemon.name.includes(search)

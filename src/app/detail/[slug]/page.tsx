@@ -6,6 +6,10 @@ import { getPokemon } from "@/app/_lib/pokemonAPI";
 import Image from "next/image";
 import React, { Suspense } from "react";
 import styles from "./DetailPage.module.css";
+import { capitalizeFirstLetter } from "@/app/_helpers/CapitalizeFirstLetter";
+import backButton from "@/app/_assets/icons/back.png";
+import Link from "next/link";
+import { Spinner } from "@/app/_components/Spinner/Spinner";
 
 const DetailPage = async ({
   params: { slug },
@@ -16,7 +20,12 @@ const DetailPage = async ({
 
   return (
     <Layout maxWidth={1100}>
-      <h1 className={styles.title}>Detail page for {slug}</h1>
+      <div className={styles.header}>
+        <Link className={styles.closeButton} href="/">
+          <Image src={backButton} alt="Close" width={20} height={20} />
+        </Link>
+        <h1 className={styles.title}>{capitalizeFirstLetter(slug)} details</h1>
+      </div>
       {pokemonDetail.sprites.front_default && (
         <Image
           src={pokemonDetail.sprites.front_default}
@@ -36,9 +45,11 @@ const DetailPage = async ({
       </section>
 
       <h2 className={styles.title}>Related Pokémon</h2>
-      <Suspense fallback={<div>Loading...</div>}>
-        <RelatedPokemonSection pokemonTypes={pokemonDetail.types} />
-      </Suspense>
+      <section className={styles.relatedPokemonContainer}>
+        <Suspense fallback={<Spinner />}>
+          <RelatedPokemonSection pokemonTypes={pokemonDetail.types} />
+        </Suspense>
+      </section>
     </Layout>
   );
 };

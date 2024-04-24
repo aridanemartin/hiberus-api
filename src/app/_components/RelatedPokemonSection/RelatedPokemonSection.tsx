@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "./RelatedPokemonSection.module.css";
 import Link from "next/link";
 import { PokemonData, PokemonType } from "@/app/_interfaces/pokemon/pokemon";
+import { capitalizeFirstLetter } from "@/app/_helpers/CapitalizeFirstLetter";
+import { Spinner } from "../Spinner/Spinner";
 
 export const RelatedPokemonSection = async ({
   pokemonTypes,
@@ -44,7 +46,9 @@ export const RelatedPokemonSection = async ({
                 width={100}
                 height={100}
               />
-              <div key={name}>{name}</div>
+              <p className={styles.pokemonName} key={name}>
+                {capitalizeFirstLetter(name)}
+              </p>
             </article>
           </Link>
         );

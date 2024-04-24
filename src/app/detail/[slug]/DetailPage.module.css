@@ -1,3 +1,17 @@
+.header {
+  display: flex;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.2rem;
+}
+
 .statsContainer {
   padding-bottom: 2rem;
+}
+
+.relatedPokemonContainer {
+  position: relative;
+  min-height: 10rem;
 }
